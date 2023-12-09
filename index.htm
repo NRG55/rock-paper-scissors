@@ -6,7 +6,19 @@
 </head>
 <body>
     <script>
-
+      const rock = 1;
+      const paper = 2;
+      const scissors = 3;
+      function getComputerChoice(){
+        const randomNumber = Math.floor(Math.random() * 3) + 1
+        console.log(randomNumber)
+        if(randomNumber === rock){
+            console.log('Rock')
+        } else if(randomNumber === paper){
+            console.log("Paper")
+        } else {console.log("Scissors")}
+      }
+      getComputerChoice();
         
     </script>
 </body>
