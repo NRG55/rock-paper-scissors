@@ -13,20 +13,15 @@
 
       function getComputerChoice(){
         const randomNumber = Math.floor(Math.random() * 3) + 1       
-        let result;
+
         if(randomNumber === rock){
-              result = 'rock';
-              return result
-           
-        } else if(randomNumber === paper){
-           
-             result = 'paper';
-             return result
-        } else {
-            
-             result = 'scissors'
-             return result
-         }        
+            return 'rock'; 
+        }    
+        if(randomNumber === paper){           
+            return 'paper';             
+        }       
+            return  'scissors'            
+                
       }      
 
       let playerScore = 0;
@@ -49,7 +44,8 @@
         } else {
             console.log(`You Lose! ${computerSelection} beats ${playerSelection}`)
             computerScore++
-            return console.log("ComputerScore: " + computerScore)
+            console.log("ComputerScore: " + computerScore)
+            return 
       }
     }         
 
@@ -60,7 +56,7 @@
       function game(){  
         
         playRound(playerSelection, computerSelection)
-
+        
         computerSelection = getComputerChoice()
         playerSelection = prompt("Try #2: Type in your choice please: Scissors, Paper or Rock:");
         playerSelection = playerSelection.toLowerCase()        
