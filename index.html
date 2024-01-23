@@ -5,6 +5,31 @@
     <title>Rock Paper Scissors</title>
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body> 
+    <div class="title">ROCK PAPER SCISSORS</div>   
+    <div class="info"></div>
+    <div class="container">
+        <div class="player">
+            <div class="playerTitle">Player</div>
+            <div>
+            <button id="btnRock" class="btn"></button>
+            <button id="btnPaper" class="btn"></button>
+            <button id="btnScissors" class="btn"></button>
+            </div>
+        </div>
+        <div class="score">0 : 0</div>
+        <div class="computer">
+            <div class="playerTitle">Computer</div>
+            <div class="computerInfo">
+                <button id="btnRockComputer" class="btn"></button>
+                <button id="btnPaperComputer" class="btn"></button>
+                <button id="btnScissorsComputer" class="btn"></button>
+            </div>
+        </div>
+    </div>
+    <div class="restart">
+        <button id="btnRestart" onClick="window.location.reload();"></button>
+    </div>
+
     <script src="rock-paper-scissors.js"></script>
 </body>

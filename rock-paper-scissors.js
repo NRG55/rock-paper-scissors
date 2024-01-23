@@ -12,76 +12,154 @@ function getComputerChoice(){
       return 'paper';             
   }       
   return  'scissors'                
-}      
+} 
+
+const btnRock = document.querySelector('#btnRock');
+const btnPaper = document.querySelector('#btnPaper');
+const btnScissors = document.querySelector('#btnScissors');
+
 
 let playerScore = 0;
 let computerScore = 0;
 let tieScore = 0;
 
 function playRound(playerSelection, computerSelection){
- 
+
+  const info = document.querySelector('.info');
+  const score = document.querySelector('.score');  
+
   if (playerSelection === "paper" && computerSelection === "rock" || 
      playerSelection === "rock" && computerSelection === "scissors" || 
-     playerSelection === "scissors" && computerSelection === "paper"){
-     console.log(`You won! ${playerSelection} beats ${computerSelection}`) 
-     playerScore++       
-     return console.log("PlayerScore: " + playerScore)
+     playerSelection === "scissors" && computerSelection === "paper"){      
+     
+     playerScore++     
+     info.textContent = `You won! ${playerSelection} beats ${computerSelection}`;
+     score.textContent = `${playerScore} : ${computerScore}`;     
+     return; 
   }        
 
-  if (playerSelection === computerSelection){
-      console.log(`Tie - ${playerSelection} against ${computerSelection}`)
+  if (playerSelection === computerSelection){      
+      
       tieScore++
-      return console.log("TieScore: " + tieScore)
+      info.textContent = `Tie - ${playerSelection} against ${computerSelection}`;
+      score.textContent = `${playerScore} : ${computerScore}`;
+      return;      
+  }  
+  
+  computerScore++
+  info.textContent = `You Lose! ${computerSelection} beats ${playerSelection}`;
+  score.textContent = `${playerScore} : ${computerScore}`;  
+  return;       
+}
+
+document.querySelector('.computerInfo').disabled = true;
+
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+
+  button.addEventListener('click', () => {
+
+    if (button.id === 'btnRock'){
+
+      playerSelection = "rock";      
+      return game();     
+    }
+
+    if (button.id === 'btnPaper'){
+
+      playerSelection = "paper";
+      return game();    
+    }
+
+    if (button.id === 'btnScissors'){
+
+      playerSelection = "scissors";
+      return game();      
+    } 
+  }) 
+})
+
+let computerSelection = getComputerChoice();  
+
+function game() { 
+  
+  playRound(playerSelection, computerSelection)
+  
+  const btnRockComputer = document.querySelector('#btnRockComputer');
+  const btnPaperComputer = document.querySelector('#btnPaperComputer');
+  const btnScissorsComputer = document.querySelector('#btnScissorsComputer');
+
+  if (computerSelection === 'rock'){
+    
+    btnRockComputer.classList.add('active');
+    btnPaperComputer.classList.remove('active');
+    btnScissorsComputer.classList.remove('active');    
   }
 
-  console.log(`You Lose! ${computerSelection} beats ${playerSelection}`)
-  computerScore++
-  console.log("ComputerScore: " + computerScore)
-  return       
-}         
+  if (computerSelection === 'paper'){
+    
+    btnRockComputer.classList.remove('active');
+    btnPaperComputer.classList.add('active');
+    btnScissorsComputer.classList.remove('active');    
+  }
 
-let playerSelection = prompt("Hi! Type in your choice please: Scissors, Paper or Rock:");
-playerSelection = playerSelection.toLowerCase();
-let computerSelection = getComputerChoice();
-
-function game(){  
+  if (computerSelection === 'scissors'){
+    
+    btnRockComputer.classList.remove('active');
+    btnPaperComputer.classList.remove('active');
+    btnScissorsComputer.classList.add('active');    
+  }  
   
-  playRound(playerSelection, computerSelection)
-  
-  computerSelection = getComputerChoice()
-  playerSelection = prompt("Try #2: Type in your choice please: Scissors, Paper or Rock:");
-  playerSelection = playerSelection.toLowerCase()        
-  playRound(playerSelection, computerSelection)
-
-  computerSelection = getComputerChoice()         
-  playerSelection = prompt("Try #3: Type in your choice please: Scissors, Paper or Rock:");
-  playerSelection = playerSelection.toLowerCase()
-  playRound(playerSelection, computerSelection)
-
-  computerSelection = getComputerChoice()
-  playerSelection = prompt("Try #4: Type in your choice please: Scissors, Paper or Rock:");
-  playerSelection = playerSelection.toLowerCase()
-  playRound(playerSelection, computerSelection)
-
-  computerSelection = getComputerChoice()
-  playerSelection = prompt("Try #5: Type in your choice please: Scissors, Paper or Rock:");
-  playerSelection = playerSelection.toLowerCase()
-  playRound(playerSelection, computerSelection)
+  computerSelection = getComputerChoice();  
 
   console.log("PlayerScore: " + playerScore)
   console.log("ComputerScore: " + computerScore)
-  console.log("TieScore: " + tieScore)
+  console.log("TieScore: " + tieScore)  
 
-  if(playerScore > computerScore){
-      console.log(`Congratulations! You won this game with a score ${playerScore} : ${computerScore}`)
-      return;
+  if(playerScore === 5){
+  
+    btnRock.disabled = true;
+    btnPaper.disabled = true;
+    btnScissors.disabled = true;
+
+    const info = document.querySelector('.info');
+    const btnRestart = document.querySelector('#btnRestart');
+    
+    info.classList.add('infoActive');
+    btnRestart.classList.add('btnRestartActive');
+
+    info.textContent = `Congratulations! You won this game with a score ${playerScore} : ${computerScore}`
+    
+    btnRestart.disabled = false;
+    btnRestart.textContent = 'RESTART';      
+   return;
   }
 
-  if (playerScore < computerScore){
-      console.log(`Unfortunately you lost this game with a score ${computerScore} : ${playerScore}` )
-      return;
-  }
-  consol.log(`Tie! ${playerScore} : ${computerScore}`)        
+  if(computerScore === 5){
+  
+    btnRock.disabled = true;
+    btnPaper.disabled = true;
+    btnScissors.disabled = true;
+
+    const info = document.querySelector('.info');
+    const btnRestart = document.querySelector('#btnRestart');
+
+
+   
+    info.textContent = `Unfortunately you lost this game with a score ${playerScore} : ${computerScore}`;
+    info.style.color = 'red';
+    info.style.fontSize = "25px";
+    btnRestart.style.background = 'rgb(69, 133, 216)';
+    btnRestart.disabled = false;
+    btnRestart.textContent = 'RESTART';     
+    return;
+  }      
 }  
 
-game()        
+
+
+
+
+
+      

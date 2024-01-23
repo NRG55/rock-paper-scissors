@@ -1,0 +1,133 @@
+.info, .title{
+
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
+}
+
+.title {
+    
+    font-size: 25px;
+    padding: 50px;
+}
+
+.info {
+
+    height: 20px;
+}
+
+.container {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 80px;
+
+}
+
+.computer, .player{
+
+    width: 330px;
+    text-align: center;
+}
+
+button {
+
+    height: 100px;
+    width: 100px;
+    border-radius: 50px;
+    border: none; 
+    box-sizing:border-box; 
+    background-size: 95%; 
+    background-repeat: no-repeat;
+    background-color: white; 
+    background-position: center;
+}   
+
+#btnRock:focus,
+#btnRock:active {
+
+    border: solid;
+    border-color: blue;
+}
+
+#btnPaper:focus,
+#btnPaper:active {
+
+    border: solid;
+    border-color: yellow;
+}
+
+#btnScissors:focus,
+#btnScissors:active {
+
+    border: solid;
+    border-color: green;
+}
+
+#btnRock, #btnRockComputer {
+
+    background-image: url("images/rock.jpg");
+}
+
+#btnPaper, #btnPaperComputer {
+
+    background-image: url("images/paper.jpg");
+}
+
+#btnScissors, #btnScissorsComputer {
+
+    background-image: url("images/scissors.jpg");
+}
+ 
+.playerTitle {
+
+    height: 40px;
+    padding-top: 40px;
+}
+
+.restart {
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+}
+
+#btnRestart {
+
+    height: 30px;
+    background-color: rgb(69, 133, 216);
+    color: white;
+    border-radius: 5px;
+    background: transparent;
+}
+
+#btnRockComputer.active {
+
+    border: 3px solid blue;
+}
+
+
+#btnPaperComputer.active {
+
+    border: 3px solid yellow;
+}
+
+#btnScissorsComputer.active {
+
+    border: 3px solid green;
+}
+
+.info.infoActive {
+
+    color:green;
+    font-size: 25px;
+   
+}
+
+#btnRestart.btnRestartActive {
+
+    background:rgb(69, 133, 216);    
+}
