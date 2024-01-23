@@ -131,3 +131,11 @@ button {
 
     background:rgb(69, 133, 216);    
 }
+
+.footer {
+    
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    text-align: center;   
+}
